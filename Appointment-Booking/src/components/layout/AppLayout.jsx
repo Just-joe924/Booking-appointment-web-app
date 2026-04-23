@@ -1,4 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
+import Footer from "../layout/Footer.jsx"
 
 function NavItem ({to, label}){
     return (
@@ -48,11 +49,7 @@ export default function AppLayout() {
             </main>
 
             {/*Footer*/}
-            <footer>
-                <div className="bg-[var(--color-brand-primary)] text-white text-center py-4">
-                    &copy; 2026 Inki-J. All rights reserved.
-                </div>
-            </footer>
+            <Footer/>
         </div>
 
         

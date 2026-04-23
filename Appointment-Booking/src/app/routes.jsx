@@ -16,54 +16,56 @@ import NotFound from "../features/booking/pages/NotFound.jsx";
 import UserSettings from "../features/booking/pages/Settings.jsx";
 
 // Admin pages
+import AdminNav from "../features/admin/config/AdminNav.js";
 import AdminDashboard from "../features/admin/pages/AdminDashboard.jsx";
 import ServiceManagement from "../features/admin/pages/ServiceManagement.jsx";
 import StaffManagement from "../features/admin/pages/StaffManagement.jsx";
 import ClientManagement from "../features/admin/pages/ClientManagement.jsx";
 import Payments from "../features/admin/pages/Payments.jsx";
 import Settings from "../features/admin/pages/Settings.jsx";
-import CalenderPage from "../features/booking/pages/CalenderPage.jsx";
+//import Calender from "../features/booking/pages/CalendarPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
+    handle: { title: "Home" },
     children: [
-      { index: true, element: <Dashboard /> },
-      { path: "bookings", element: <BookAppointment /> },
+      { index: true, element: <Dashboard />, handle: { title: "Dashboard" } },
+      { path: "bookings", element: <BookAppointment />, handle: { title: "Book Appointment" } },
     ],
   },
   {
     path: "/login",
     element: <Login />,
+    handle: { title: "Login" },
   },
   {
     path: "/admin",
     element: <AdminLayout />,
-    children: [
-      { index: true, element: <AdminDashboard /> },
-      { path: "clients", element: <ClientManagement /> },
-      { path: "services", element: <ServiceManagement /> },
-      { path: "staff", element: <StaffManagement /> },
-      { path: "payments", element: <Payments /> },
-      { path: "settings", element: <Settings /> },
-      { path: "calender", element: <CalenderPage /> },
-    ],
+    handle: { title: "Admin" },
+    children: AdminNav.map((item) => ({
+      path: item.path,
+      element: componentMap[item.path],
+      handle: { title: item.label },
+    }))
   },
   {
     path: "/user",
     element: <UserLayout />,
+    handle: { title: "User" },
     children: [
-      { index: true, element: <Portfolio /> },
-      { path: "book", element: <BookAppointment /> },
-      { path: "appointments", element: <MyAppointments /> },
-      { path: "profile", element: <ProfileManagement /> },
-      { path: "settings", element: <UserSettings /> },
+      { index: true, element: <Portfolio />, handle: { title: "Portfolio" } },
+      { path: "book", element: <BookAppointment />, handle: { title: "Book Appointment" } },
+      { path: "appointments", element: <MyAppointments />, handle: { title: "My Appointments" } },
+      { path: "profile", element: <ProfileManagement />, handle: { title: "Profile" } },
+      { path: "settings", element: <UserSettings />, handle: { title: "Settings" } },
     ],
   },
   {
     path: "*",
     element: <NotFound />,
+    handle: { title: "Not Found" },
   },
 ]);
 
