@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import AdminConsole from "../../../assets/icons/admin-console.svg";
-import AdminNav from "../config/AdminNav.js"
+import { AdminNav } from "../config/AdminNav.js"
+import { LogOut } from "lucide-react";
 
 export default function Sidebar() {
     return (

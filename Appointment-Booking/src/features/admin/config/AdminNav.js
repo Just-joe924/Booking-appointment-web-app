@@ -5,7 +5,7 @@ import {
   UsersRound,
   CreditCard,
   Settings,
-  Calendar,
+  //Calendar,
 } from "lucide-react";
 
 export const AdminNav = [
@@ -15,5 +15,5 @@ export const AdminNav = [
   { path: "staff", label: "Staff Management", icon: UsersRound },
   { path: "payments", label: "Payments", icon: CreditCard },
   { path: "settings", label: "Settings", icon: Settings },
-  { path: "calendar", label: "Calendar", icon: Calendar},
+  //{ path: "calendar", label: "Calendar", icon: Calendar},
 ];

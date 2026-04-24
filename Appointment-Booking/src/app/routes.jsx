@@ -16,14 +16,23 @@ import NotFound from "../features/booking/pages/NotFound.jsx";
 import UserSettings from "../features/booking/pages/Settings.jsx";
 
 // Admin pages
-import AdminNav from "../features/admin/config/AdminNav.js";
+import { AdminNav } from "../features/admin/config/AdminNav.js";
 import AdminDashboard from "../features/admin/pages/AdminDashboard.jsx";
 import ServiceManagement from "../features/admin/pages/ServiceManagement.jsx";
 import StaffManagement from "../features/admin/pages/StaffManagement.jsx";
 import ClientManagement from "../features/admin/pages/ClientManagement.jsx";
 import Payments from "../features/admin/pages/Payments.jsx";
 import Settings from "../features/admin/pages/Settings.jsx";
-//import Calender from "../features/booking/pages/CalendarPage.jsx";
+//import Calendar from "../features/booking/pages/CalendarPage.jsx";
+
+const componentMap = {
+  "": AdminDashboard,
+  clients: ClientManagement,
+  services: ServiceManagement,
+  staff: StaffManagement,
+  payments: Payments,
+  settings: Settings,
+};
 
 const router = createBrowserRouter([
   {
@@ -44,11 +53,25 @@ const router = createBrowserRouter([
     path: "/admin",
     element: <AdminLayout />,
     handle: { title: "Admin" },
-    children: AdminNav.map((item) => ({
-      path: item.path,
-      element: componentMap[item.path],
-      handle: { title: item.label },
-    }))
+    children: [
+      {
+        index: true,
+        element: <AdminDashboard />,
+        handle: { title: "Dashboard" },
+      },
+
+      ...AdminNav
+        .filter(item => item.path !== "")
+        .map(item => {
+          const Component = componentMap[item.path];
+
+          return {
+            path: item.path,
+            element: Component ? <Component /> : <div>Missing page: {item.path}</div>,
+            handle: { title: item.label },
+          };
+        }),
+    ],
   },
   {
     path: "/user",
