@@ -5,7 +5,7 @@ import Footer from "../layout/Footer.jsx"
 
 export default function AdminLayout() {
   return (
-    <div className="min-h-full bg-slate-50 flex">
+    <div className="min-h-full bg-[var(--color-bg)] flex">
         <Sidebar />
         <div className="flex flex-col flex-1 min-h-full overflow-hidden">
           <Header/>

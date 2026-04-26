@@ -24,7 +24,7 @@ export default function Header() {
 
         <ChevronRight size={14} color="rgba(255,255,255,0.6)" />
 
-        <span className="text-base font-semibold tracking-wide text-[var(--color-bg)]">
+        <span className="text-base font-semibold tracking-wide text-white">
           {title}
         </span>
       </div>

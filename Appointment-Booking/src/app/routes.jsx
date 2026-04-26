@@ -10,6 +10,7 @@ import Dashboard from "../features/booking/pages/Dashboard.jsx";
 import BookAppointment from "../features/booking/pages/BookAppointment.jsx";
 import MyAppointments from "../features/booking/pages/MyAppointments.jsx";
 import Login from "../features/booking/pages/Login.jsx";
+import Signup from "../features/booking/pages/Signup.jsx";
 import Portfolio from "../features/booking/pages/Portfolio.jsx";
 import ProfileManagement from "../features/booking/pages/ProfileManagement.jsx";
 import NotFound from "../features/booking/pages/NotFound.jsx";
@@ -42,12 +43,18 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Dashboard />, handle: { title: "Dashboard" } },
       { path: "bookings", element: <BookAppointment />, handle: { title: "Book Appointment" } },
+      
     ],
   },
   {
     path: "/login",
     element: <Login />,
     handle: { title: "Login" },
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+    handle: { title: "Signup" },
   },
   {
     path: "/admin",
